@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20223d2e72834a4c9fd146b1ef783da5" Name="Diagram1">
+        <EntityTypeShape EntityType="CollegeDBModel.Classroom" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Day" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Gender" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Gruppa" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.LessonNum" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.LessonPlan" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Otdel" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Role" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Schedule" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Special" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Student" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Subject" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.Teacher" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeDBModel.User" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="CollegeDBModel.FK_Schedule_Classroom" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Schedule_Day" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_User_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Gruppa_Special" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_LessonPlan_Gruppa" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Student_Gruppa" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Schedule_LessonNum" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_LessonPlan_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_LessonPlan_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Schedule_LessonPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Special_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Subject_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Teacher_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Student_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_Teacher_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,62 @@
+﻿<Page x:Class="CollegeApp.TeacherViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TeacherViewPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Список преподавателей"
+                   FontSize="26"
+                   FontWeight="DemiBold"
+                   TextAlignment="Center"
+                   Margin="0 0 0 10"/>
+            <Button x:Name="BtnAddTeacher"
+                    Click="BtnAddTeacher_Click"
+                    Content="Добавить преподавателя"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"/>
+        </Grid>
+
+        <WrapPanel Grid.Row="1"
+                   Orientation="Horizontal"
+                   HorizontalAlignment="Center">
+            <TextBox x:Name="TextUserName"
+                     Width="300"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="ФИО преподавателя"/>
+            <ComboBox x:Name="ComboGender"
+                      Width="150"
+                      Margin="10"
+                      materialDesign:HintAssist.Hint="Пол"/>
+            <ComboBox x:Name="ComboOtdel"
+                      Width="150"
+                      Margin="10"
+                      materialDesign:HintAssist.Hint="Отделение"/>
+            <DatePicker x:Name="DateBirth"
+                        Width="150"
+                        Margin="10"
+                        materialDesign:HintAssist.Hint="Дата рождения"/>
+        </WrapPanel>
+
+        <ListView Grid.Row="2">
+            
+        </ListView>
+        
+    </Grid>
+</Page>

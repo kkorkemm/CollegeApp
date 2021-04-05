@@ -1,0 +1,51 @@
+﻿<Page x:Class="CollegeApp.GruppaAddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GruppaAddEditPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Добавить группу"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       x:Name="TextHeader"
+                       Margin="0 0 0 30"/>
+            <TextBox x:Name="TextGruppaName"
+                     materialDesign:HintAssist.Hint="Название группы"
+                     Width="300"
+                     Margin="0 0 0 10"
+                     Text="{Binding GruppaName}"/>
+            <ComboBox x:Name="ComboSpecial"
+                      DisplayMemberPath="SpecialName"
+                      materialDesign:HintAssist.Hint="Специальность"
+                      Width="300"
+                      Margin="0 0 0 10"
+                      SelectedItem="{Binding Special}"/>
+            <DatePicker materialDesign:HintAssist.Hint="Дата поступления"
+                        x:Name="DateBegin"
+                        Width="300"
+                        Margin="0 0 0 10"
+                        SelectedDate="{Binding BeginDate}"/>
+            <DatePicker materialDesign:HintAssist.Hint="Дата выпуска"
+                        x:Name="DateFinish"
+                        Width="300"
+                        Margin="0 0 0 10"
+                        SelectedDate="{Binding FinishDate}"/>
+            <CheckBox Content="Активировать"
+                      IsChecked="{Binding Active}"
+                      Margin="0 0 0 20"
+                      x:Name="CheckActive"/>
+            <Button Content="Сохранить"
+                    x:Name="BtnAddGruppa"
+                    Click="BtnAddGruppa_Click"
+                    HorizontalAlignment="Left"/>
+        </StackPanel> 
+    </Grid>
+</Page>

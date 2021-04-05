@@ -1,0 +1,96 @@
+﻿<Page x:Class="CollegeApp.TeacherAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TeacherAddPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+    
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            
+            <TextBlock Text="Добавить преподавателя"
+                   FontSize="24"
+                   Margin="0 0 0 30"/>
+
+            <WrapPanel Orientation="Horizontal"
+                       Margin="0 0 0 10">
+                <TextBox materialDesign:HintAssist.Hint="Фамилия"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 10 10"
+                     Text="{Binding Surname}"/>
+                <TextBox materialDesign:HintAssist.Hint="Имя"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 10 10"
+                     Text="{Binding Name}"/>
+                <TextBox materialDesign:HintAssist.Hint="Отчество"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 0 10"
+                    Text="{Binding LastName}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                       Margin="0 0 0 15">
+                <ComboBox x:Name="ComboGender"
+                      materialDesign:HintAssist.Hint="Пол"
+                      DisplayMemberPath="GenderName"
+                      Margin="0 0 10 10"
+                      Width="300"
+                      SelectedItem="{Binding Gender}"/>
+                <DatePicker materialDesign:HintAssist.Hint="Дата рождения"
+                        x:Name="DateBirth"
+                        Margin="0 0 0 10"
+                        Width="300"
+                        SelectedDate="{Binding BirthDate}"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal"
+                       Margin="0 0 0 15">
+                <TextBox materialDesign:HintAssist.Hint="Логин"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 10 10"
+                     Text="{Binding Login}"/>
+                <TextBox materialDesign:HintAssist.Hint="Пароль"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 0 10"
+                     Text="{Binding Password}"/>
+            </WrapPanel>
+            <ComboBox x:Name="ComboOtdel"
+                      materialDesign:HintAssist.Hint="Отделение"
+                      DisplayMemberPath="OtdelName"
+                      Width="300"
+                      HorizontalAlignment="Left"
+                      SelectedItem="{Binding Teacher.Otdel}"
+                      Margin="0 0 0 10"/>
+
+            <CheckBox x:Name="CheckHigh"
+                      Content="Имеет высшее образование"
+                      IsChecked="{Binding Teacher.HasHignEducation}"
+                      Width="200"
+                      HorizontalAlignment="Left"/>
+
+            <Button Content="Сохранить"
+                    x:Name="BtnAddTeacher"
+                    Click="BtnAddTeacher_Click"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    Margin="0 40 0 0"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
