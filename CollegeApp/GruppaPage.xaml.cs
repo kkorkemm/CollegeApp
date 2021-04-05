@@ -29,7 +29,10 @@ namespace CollegeApp
 
         private void gruppaName_ContentRendered(object sender, EventArgs e)
         {
-
+            if (NavigationManager.GruppaFrame.CanGoBack)
+                BtnBack.Visibility = Visibility.Visible;
+            else
+                BtnBack.Visibility = Visibility.Hidden;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

@@ -16,13 +16,27 @@ namespace CollegeApp
             InitializeComponent();
             TextHello.Text += $" {CollegeDBEntities.UserFullName}! ({CollegeDBEntities.UserRole})";
 
-            teacherTabFrame.Navigate(new TeacherPage());
+            otdelTabFrame.Navigate(new OtdelPage());
             gruppaTabFrame.Navigate(new GruppaPage());
+            subjectTabFrame.Navigate(new SubjectPage());
+            specialTabFrame.Navigate(new SpecialPage());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationManager.MainFrame.Navigate(new LoginPage());
+        }
+
+        private void otdelTabFrame_ContentRendered(object sender, EventArgs e)
+        {
+            //if (NavigationManager.OtdelFrame.CanGoBack)
+            //    BtnBackOtdel.Visibility = Visibility.Visible;
+            //else
+            //    BtnBackOtdel.Visibility = Visibility.Visible;
+        }
+        private void BtnBackOtdel_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationManager.OtdelFrame.GoBack();
         }
     }
 }

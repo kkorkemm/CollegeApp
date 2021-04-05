@@ -19,7 +19,9 @@ namespace CollegeApp
         {
             this.LessonPlan = new HashSet<LessonPlan>();
         }
-    
+
+
+        public string IsActive => Active ? "Активен" : "Заблокирован";
         public int SubjectID { get; set; }
         public string SubjectName { get; set; }
         public int OtdelID { get; set; }

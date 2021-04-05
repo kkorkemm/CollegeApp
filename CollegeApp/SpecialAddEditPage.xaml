@@ -1,0 +1,46 @@
+﻿<Page x:Class="CollegeApp.SpecialAddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SpecialAddEditPage">
+
+    <Grid>
+        <StackPanel Margin="15"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left">
+
+            <TextBlock Text="Добавление специальности"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Margin="0 0 0 30"/>
+
+            <TextBox Text="{Binding SpecialName}"
+                     materialDesign:HintAssist.Hint="Название специальности"
+                     Width="300"
+                     Margin="0 0 0 10"/>
+
+            <ComboBox SelectedItem="{Binding Otdel}"
+                      x:Name="ComboOtdel"
+                      DisplayMemberPath="OtdelName"
+                      materialDesign:HintAssist.Hint="Отделение"
+                      Width="300"
+                      Margin="0 0 0 10"/>
+
+            <CheckBox IsChecked="{Binding Active}"
+                      Content="Активировать"
+                      Margin="0 0 0 30"/>
+
+            <Button x:Name="BtnAddSpecial"
+                    Click="BtnAddSpecial_Click"
+                    Content="Сохранить"
+                    Width="200"
+                    HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

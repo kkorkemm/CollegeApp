@@ -62,33 +62,49 @@
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Frame Name="studentTabFrame"/>
             </TabItem>
             <TabItem Header="Отделения"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Frame x:Name="otdelTabFrame"
+                       NavigationUIVisibility="Hidden"
+                           Grid.Row="1"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Специальности"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Frame x:Name="specialTabFrame"
+                       NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Группы"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
                 <Frame x:Name="gruppaTabFrame"
-                       />
+                       NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Предметы"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Frame x:Name="subjectTabFrame"
+                       NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Аудитории"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Frame x:Name="classroomTabFrame"
+                       NavigationUIVisibility="Hidden"/>
             </TabItem>
         </TabControl>
     </Grid>

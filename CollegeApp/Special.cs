@@ -19,7 +19,9 @@ namespace CollegeApp
         {
             this.Gruppa = new HashSet<Gruppa>();
         }
-    
+
+
+        public string IsActive => Active ? "Активна" : "Заблокирована";
         public int SpecialID { get; set; }
         public string SpecialName { get; set; }
         public int OtdelID { get; set; }
