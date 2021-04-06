@@ -75,6 +75,15 @@
     <Compile Include="Classroom.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClassroomAddEditPage.xaml.cs">
+      <DependentUpon>ClassroomAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassroomPage.xaml.cs">
+      <DependentUpon>ClassroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassroomViewPage.xaml.cs">
+      <DependentUpon>ClassroomViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Day.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -184,6 +193,18 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="ClassroomAddEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClassroomViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GruppaAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

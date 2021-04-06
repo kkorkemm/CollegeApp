@@ -24,7 +24,9 @@
                    Margin="15"/>
         <TextBox materialDesign:HintAssist.Hint="Название отделения"
                  Width="300"
-                 Grid.Row="1"/>
+                 Grid.Row="1"
+                 x:Name="TextOtdel"
+                 TextChanged="TextOtdel_TextChanged"/>
         <DataGrid Grid.Row="2"
                   Margin="10"
                   x:Name="DGridOtdel"

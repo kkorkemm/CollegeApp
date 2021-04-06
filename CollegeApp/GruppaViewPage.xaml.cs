@@ -21,5 +21,25 @@ namespace CollegeApp
         {
             NavigationManager.GruppaFrame.Navigate(new GruppaAddEditPage(null));
         }
+
+        private void GruppaName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboSpecial_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void DateBegin_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void DateFinish_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

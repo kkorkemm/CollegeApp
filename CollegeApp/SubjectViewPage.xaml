@@ -29,12 +29,15 @@
                    HorizontalAlignment="Center">
             <TextBox materialDesign:HintAssist.Hint="Название предмета"
                      Width="200"
-                     Margin="0 0 15 10"/>
+                     Margin="0 0 15 10"
+                     x:Name="TextSubject"
+                     TextChanged="TextSubject_TextChanged"/>
             <ComboBox materialDesign:HintAssist.Hint="Отделение"
                       Width="200"
                       x:Name="ComboOtdel"
                       DisplayMemberPath="OtdelName"
-                      Margin="0 0 0 10"/>
+                      Margin="0 0 0 10"
+                      SelectionChanged="ComboOtdel_SelectionChanged"/>
         </WrapPanel>
 
         <DataGrid Grid.Row="2"

@@ -31,13 +31,16 @@
             <TextBox materialDesign:HintAssist.Hint="Название специальности"
                      Width="200"
                      Margin="0 0 15 10"
-                     Text="{Binding SpecialName}"/>
+                     Text="{Binding SpecialName}"
+                     x:Name="TextSpecial"
+                     TextChanged="TextSpecial_TextChanged"/>
             <ComboBox materialDesign:HintAssist.Hint="Отделение"
                       Width="200"
                       DisplayMemberPath="OtdelName"
                       Margin="0 0 0 10"
                       SelectedItem="{Binding Otdel}"
-                      x:Name="ComboOtdel"/>
+                      x:Name="ComboOtdel"
+                     SelectionChanged="ComboOtdel_SelectionChanged"/>
         </WrapPanel>
 
         <DataGrid Grid.Row="2"

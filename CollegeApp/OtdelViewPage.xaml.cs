@@ -31,5 +31,17 @@ namespace CollegeApp
         {
             NavigationManager.OtdelFrame.Navigate(new OtdelAddEditPage(null));
         }
+
+        private void TextOtdel_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var currentOtdel = CollegeDBEntities.GetContext().Otdel.ToList();
+
+            if (!string.IsNullOrWhiteSpace(TextOtdel.Text))
+            {
+               currentOtdel = currentOtdel.Where(p => p.OtdelName.ToLower().Contains(TextOtdel.Text.ToLower())).ToList();
+            }
+
+            DGridOtdel.ItemsSource = currentOtdel;
+        }
     }
 }

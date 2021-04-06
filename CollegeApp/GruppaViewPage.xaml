@@ -29,26 +29,29 @@
             <TextBox materialDesign:HintAssist.Hint="Название группы"
                      x:Name="GruppaName"
                      Margin="10"
-                     Width="200"/>
+                     Width="200"
+                     TextChanged="GruppaName_TextChanged"/>
             <ComboBox x:Name="ComboSpecial"
                       materialDesign:HintAssist.Hint="Специальность"
                       Margin="10"
                       DisplayMemberPath="SpecialName"
-                      Width="200"/>
+                      Width="200"
+                      SelectionChanged="ComboSpecial_SelectionChanged"/>
             <DatePicker x:Name="DateBegin"
                         materialDesign:HintAssist.Hint="Дата поступления"
-                        Margin="10"/>
+                        Margin="10"
+                        SelectedDateChanged="DateBegin_SelectedDateChanged"/>
             <DatePicker Name="DateFinish"
                         materialDesign:HintAssist.Hint="Дата выпуска"
-                        Margin="10"/>
+                        Margin="10"
+                        SelectedDateChanged="DateFinish_SelectedDateChanged"/>
             
         </WrapPanel>
 
         <DataGrid Grid.Row="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  x:Name="DGridGruppa"
-                  Margin="15">
+                  x:Name="DGridGruppa">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название группы"
