@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GruppaViewPae">
 
-    <Grid Margin="15">
+    <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -20,38 +20,42 @@
         <TextBlock Text="Список групп"
                    FontSize="24"
                    FontWeight="DemiBold"
-                   TextAlignment="Center"
-                   Margin="10"/>
+                   Margin="0 0 0 10"/>
         
         <WrapPanel Grid.Row="1"
                    Orientation="Horizontal"
-                   HorizontalAlignment="Center">
+                   HorizontalAlignment="Left">
+            
             <TextBox materialDesign:HintAssist.Hint="Название группы"
                      x:Name="GruppaName"
-                     Margin="10"
+                     Margin="0 0 10 10"
                      Width="200"
                      TextChanged="GruppaName_TextChanged"/>
+            
             <ComboBox x:Name="ComboSpecial"
                       materialDesign:HintAssist.Hint="Специальность"
-                      Margin="10"
+                      Margin="0 0 10 10"
                       DisplayMemberPath="SpecialName"
                       Width="200"
                       SelectionChanged="ComboSpecial_SelectionChanged"/>
             <DatePicker x:Name="DateBegin"
                         materialDesign:HintAssist.Hint="Дата поступления"
-                        Margin="10"
-                        SelectedDateChanged="DateBegin_SelectedDateChanged"/>
+                        Margin="0 0 10 10"
+                        SelectedDateChanged="DateBegin_SelectedDateChanged"
+                        Width="150"/>
             <DatePicker Name="DateFinish"
                         materialDesign:HintAssist.Hint="Дата выпуска"
-                        Margin="10"
-                        SelectedDateChanged="DateFinish_SelectedDateChanged"/>
+                        Margin="0 0 10 10"
+                        SelectedDateChanged="DateFinish_SelectedDateChanged"
+                        Width="150"/>
             
         </WrapPanel>
 
         <DataGrid Grid.Row="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  x:Name="DGridGruppa">
+                  x:Name="DGridGruppa"
+                  Margin="0 30 0 10">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название группы"
@@ -66,15 +70,27 @@
                 <DataGridTextColumn Header="Дата выпуска"
                                     Binding="{Binding FinishDate, StringFormat=dd.MM.yyyy}"
                                     Width="*"/>
+                <DataGridTextColumn Header="Статус"
+                                    Binding="{Binding IsActive}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnView"
+                                    Click="BtnView_Click"
+                                    Content="Посмотреть"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
             
         </DataGrid>
 
         <Button Content="Добавить группу"
-                    x:Name="BtnAddGruppa"
-                    Click="BtnAddGruppa_Click"
-                    HorizontalAlignment="Left"
-                    Margin="10 0 0 0"
+                x:Name="BtnAddGruppa"
+                Click="BtnAddGruppa_Click"
+                HorizontalAlignment="Left"
                 Grid.Row="3"
                 Width="200"/>
         

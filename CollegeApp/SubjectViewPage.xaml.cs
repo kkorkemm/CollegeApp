@@ -64,5 +64,10 @@ namespace CollegeApp
         {
             UpdateSubject();
         }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.SubjectFrame.Navigate(new SubjectProfilePage((sender as Button).DataContext as Subject));
+        }
     }
 }

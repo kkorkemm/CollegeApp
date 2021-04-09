@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeApp
 {
@@ -27,8 +18,11 @@ namespace CollegeApp
             InitializeComponent();
 
             if (selectedSpecial != null)
+            {
                 currentSpecial = selectedSpecial;
-
+                textMain.Text = "Редактирование специальности";
+            }
+                
             DataContext = currentSpecial;
 
             ComboOtdel.ItemsSource = CollegeDBEntities.GetContext().Otdel.ToList();
@@ -64,6 +58,11 @@ namespace CollegeApp
                     MessageBox.Show("При попытке сохранения произошла ошибка");
                 }
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.SpecialFrame.Navigate(new SpecialViewPage());
         }
     }
 }

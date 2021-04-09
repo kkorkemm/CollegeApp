@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeApp
 {
@@ -23,8 +12,21 @@ namespace CollegeApp
         public SpecialPage()
         {
             InitializeComponent();
-            specialFrame.Navigate(new SpecialViewPage());
+            specialFrame.NavigationService.Navigate(new SpecialViewPage());
             NavigationManager.SpecialFrame = specialFrame;
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.SpecialFrame.GoBack();
+        }
+
+        private void specialFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (NavigationManager.SpecialFrame.CanGoBack)
+                BtnBack.Visibility = Visibility.Visible;
+            else
+                BtnBack.Visibility = Visibility.Hidden;
         }
     }
 }

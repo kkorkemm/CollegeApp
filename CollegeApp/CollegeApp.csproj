@@ -81,6 +81,9 @@
     <Compile Include="ClassroomPage.xaml.cs">
       <DependentUpon>ClassroomPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassroomProfilePage.xaml.cs">
+      <DependentUpon>ClassroomProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassroomViewPage.xaml.cs">
       <DependentUpon>ClassroomViewPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,9 @@
     </Compile>
     <Compile Include="GruppaPage.xaml.cs">
       <DependentUpon>GruppaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GruppaProfilePage.xaml.cs">
+      <DependentUpon>GruppaProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GruppaViewPage.xaml.cs">
       <DependentUpon>GruppaViewPage.xaml</DependentUpon>
@@ -139,6 +145,9 @@
     <Compile Include="OtdelPage.xaml.cs">
       <DependentUpon>OtdelPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OtdelProfilePage.xaml.cs">
+      <DependentUpon>OtdelProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OtdelViewPage.xaml.cs">
       <DependentUpon>OtdelViewPage.xaml</DependentUpon>
     </Compile>
@@ -157,6 +166,9 @@
     <Compile Include="SpecialPage.xaml.cs">
       <DependentUpon>SpecialPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SpecialProfilePage.xaml.cs">
+      <DependentUpon>SpecialProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SpecialViewPage.xaml.cs">
       <DependentUpon>SpecialViewPage.xaml</DependentUpon>
     </Compile>
@@ -171,6 +183,9 @@
     </Compile>
     <Compile Include="SubjectPage.xaml.cs">
       <DependentUpon>SubjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectProfilePage.xaml.cs">
+      <DependentUpon>SubjectProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubjectViewPage.xaml.cs">
       <DependentUpon>SubjectViewPage.xaml</DependentUpon>
@@ -201,6 +216,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ClassroomProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassroomViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GruppaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GruppaProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,6 +268,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OtdelProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OtdelViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +284,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SpecialProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SpecialViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -266,6 +297,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SubjectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SubjectProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

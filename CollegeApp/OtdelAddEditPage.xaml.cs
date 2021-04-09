@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -48,6 +45,11 @@ namespace CollegeApp
                     MessageBox.Show("При попытке сохранения произошла ошибка");
                 }
             }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.OtdelFrame.Navigate(new OtdelViewPage());
         }
     }
 }

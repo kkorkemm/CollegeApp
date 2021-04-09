@@ -9,7 +9,13 @@
       Title="SpecialPage">
 
     <Grid>
+        <Button x:Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"/>
         <Frame x:Name="specialFrame"
-               NavigationUIVisibility="Hidden"/>
+               NavigationUIVisibility="Hidden"
+               ContentRendered="specialFrame_ContentRendered"/>
     </Grid>
 </Page>

@@ -9,9 +9,6 @@
       Title="ClassroomPage">
 
     <Grid>
-
-        <Frame x:Name="classroomFrame"
-               NavigationUIVisibility="Hidden"/>
-
+        <Frame x:Name="classroomFrame"/>
     </Grid>
 </Page>

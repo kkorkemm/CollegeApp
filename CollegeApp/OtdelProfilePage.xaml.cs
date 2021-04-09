@@ -16,28 +16,30 @@ using System.Windows.Shapes;
 namespace CollegeApp
 {
     /// <summary>
-    /// Логика взаимодействия для OtdelPage.xaml
+    /// Логика взаимодействия для OtdelProfilePage.xaml
     /// </summary>
-    public partial class OtdelPage : Page
+    public partial class OtdelProfilePage : Page
     {
-        public OtdelPage()
+        Otdel currentOtdel = new Otdel();
+
+        public OtdelProfilePage(Otdel otdel)
         {
             InitializeComponent();
-            otdelFrame.Navigate(new OtdelViewPage());
-            NavigationManager.OtdelFrame = otdelFrame;
+
+            if (otdel != null)
+                currentOtdel = otdel;
+
+            DataContext = currentOtdel;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationManager.OtdelFrame.GoBack();
+            NavigationManager.OtdelFrame.Navigate(new OtdelViewPage());
         }
 
-        private void otdelFrame_ContentRendered(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //if (NavigationManager.OtdelFrame.CanGoBack)
-            //    BtnBack.Visibility = Visibility.Visible;
-            //else
-            //    BtnBack.Visibility = Visibility.Hidden;
+            NavigationManager.OtdelFrame.Navigate(new OtdelAddEditPage(currentOtdel));
         }
     }
 }

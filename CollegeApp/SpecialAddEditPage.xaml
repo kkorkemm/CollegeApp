@@ -9,15 +9,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SpecialAddEditPage">
 
-    <Grid>
-        <StackPanel Margin="15"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Left">
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Grid.ColumnSpan="2">
 
             <TextBlock Text="Добавление специальности"
                        FontSize="24"
                        FontWeight="SemiBold"
-                       Margin="0 0 0 30"/>
+                       Margin="0 0 0 30"
+                       x:Name="textMain"/>
 
             <TextBox Text="{Binding SpecialName}"
                      materialDesign:HintAssist.Hint="Название специальности"
@@ -32,15 +44,27 @@
                       Margin="0 0 0 10"/>
 
             <CheckBox IsChecked="{Binding Active}"
-                      Content="Активировать"
-                      Margin="0 0 0 30"/>
+                      Content="Активировать"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
             <Button x:Name="BtnAddSpecial"
                     Click="BtnAddSpecial_Click"
-                    Content="Сохранить"
-                    Width="200"
-                    HorizontalAlignment="Left"/>
+                    Content="Сохранить"/>
 
-        </StackPanel>
+            <Button x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Content="Назад"
+                    Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
     </Grid>
 </Page>

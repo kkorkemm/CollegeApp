@@ -81,7 +81,8 @@
             <TabItem Header="Специальности"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemSpecial">
                 <Frame x:Name="specialTabFrame"
                        NavigationUIVisibility="Hidden"/>
             </TabItem>

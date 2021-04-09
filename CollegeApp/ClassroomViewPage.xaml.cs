@@ -27,5 +27,10 @@ namespace CollegeApp
 
             DGridClassroom.ItemsSource = currentClassroom;
         }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.ClassroomFrame.Navigate(new ClassroomProfilePage((sender as Button).DataContext as Classroom));
+        }
     }
 }

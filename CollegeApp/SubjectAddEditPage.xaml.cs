@@ -68,5 +68,10 @@ namespace CollegeApp
                 }
             }
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.SubjectFrame.Navigate(new SubjectViewPage());
+        }
     }
 }

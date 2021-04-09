@@ -13,12 +13,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="BtnBack" 
+        <!--<Button x:Name="BtnBack" 
                 Click="BtnBack_Click"
                 Content="Назад" 
                 VerticalAlignment="Top"
                 HorizontalAlignment="Left"
-                Style="{StaticResource MaterialDesignFlatButton}"/>
+                Style="{StaticResource MaterialDesignFlatButton}"/>-->
         <Frame x:Name="gruppaName"
                ContentRendered="gruppaName_ContentRendered"
                Grid.Row="1"/>

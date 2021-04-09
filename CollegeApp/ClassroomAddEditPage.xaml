@@ -9,11 +9,21 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClassroomAddEditPage">
 
-    <Grid>
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <StackPanel VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="15">
+                    Grid.ColumnSpan="2">
 
             <TextBlock x:Name="TextMain"
                        Text="Добавление аудитории"
@@ -24,19 +34,33 @@
 
             <TextBox materialDesign:HintAssist.Hint="Название аудитории"
                      Width="300"
-                     Margin="0 0 0 15"
+                     Margin="0 0 0 10"
                      Text="{Binding ClassroomName}"/>
 
             <CheckBox Content="Активировать"
-                      Margin="0 0 0 30"
                       IsChecked="{Binding Active}"/>
 
-            <Button x:Name="BtnAddClassroom"
-                    Click="BtnAddClassroom_Click"
-                    Content="Сохранить"
-                    HorizontalAlignment="Left"/>
-
         </StackPanel>
-        
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="BtnAddClassroom"
+                Click="BtnAddClassroom_Click"
+                Content="Сохранить"/>
+
+            <Button x:Name="BtnBack"
+                Click="BtnBack_Click"
+                Content="Назад"
+                    Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
+
     </Grid>
 </Page>

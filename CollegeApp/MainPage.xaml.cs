@@ -19,8 +19,10 @@ namespace CollegeApp
             otdelTabFrame.Navigate(new OtdelPage());
             gruppaTabFrame.Navigate(new GruppaPage());
             subjectTabFrame.Navigate(new SubjectPage());
-            specialTabFrame.Navigate(new SpecialPage());
+            specialTabFrame.NavigationService.Navigate(new SpecialPage());
+
             classroomTabFrame.Navigate(new ClassroomPage());
+            NavigationManager.ClassroomFrame = classroomTabFrame;
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)

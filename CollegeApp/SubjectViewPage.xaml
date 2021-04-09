@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SubjectViewPage">
 
-    <Grid Margin="15">
+    <Grid Margin="25">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,29 +21,32 @@
         <TextBlock Text="Список предметов"
                    FontSize="24"
                    FontWeight="SemiBold"
-                   TextAlignment="Center"
-                   Margin="15"/>
+                   Margin="0 0 0 10"/>
 
         <WrapPanel Grid.Row="1"
                    Orientation="Horizontal"
-                   HorizontalAlignment="Center">
+                   HorizontalAlignment="Left">
+            
             <TextBox materialDesign:HintAssist.Hint="Название предмета"
                      Width="200"
-                     Margin="0 0 15 10"
+                     Margin="0 0 10 10"
                      x:Name="TextSubject"
                      TextChanged="TextSubject_TextChanged"/>
+            
             <ComboBox materialDesign:HintAssist.Hint="Отделение"
                       Width="200"
                       x:Name="ComboOtdel"
                       DisplayMemberPath="OtdelName"
-                      Margin="0 0 0 10"
+                      Margin="0 0 10 10"
                       SelectionChanged="ComboOtdel_SelectionChanged"/>
         </WrapPanel>
 
         <DataGrid Grid.Row="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
-                  Name="DGridSubject">
+                  Name="DGridSubject"
+                  Margin="0 30 0 10">
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название предмета"
                                     Binding="{Binding SubjectName}"
@@ -57,6 +60,16 @@
                 <DataGridTextColumn Header="Статус"
                                     Binding="{Binding IsActive}"
                                     Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnView"
+                                    Click="BtnView_Click"
+                                    Content="Посмотреть"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

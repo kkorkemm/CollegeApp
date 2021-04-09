@@ -9,9 +9,19 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OtdelAddEditPage">
 
-    <Grid>
-        <StackPanel Margin="20"
-                    VerticalAlignment="Top">
+    <Grid Margin="20">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel VerticalAlignment="Top" Grid.ColumnSpan="2">
 
             <TextBlock Text="Добавление отделения"
                        FontSize="24"
@@ -27,12 +37,29 @@
                       IsChecked="{Binding Active}"
                       Width=" 300"
                       HorizontalAlignment="Left"
-                      Margin="0 0 0 30"/>
-            <Button Content="Сохранить"
-                    x:Name="BtnAddOtdel"
-                    Click="BtnAddOtdel_Click"
-                    HorizontalAlignment="Left"/>
+                      Margin="0 0 0 10"/>
 
         </StackPanel>
+
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Content="Сохранить"
+                    x:Name="BtnAddOtdel"
+                    Click="BtnAddOtdel_Click"/>
+
+            <Button Content="Назад"
+                    x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Grid.Column="2"/>
+        </Grid>
+        
     </Grid>
 </Page>

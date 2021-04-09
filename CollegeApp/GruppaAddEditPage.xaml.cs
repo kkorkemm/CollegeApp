@@ -70,5 +70,10 @@ namespace CollegeApp
                 }
             }
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.GruppaFrame.Navigate(new GruppaViewPage());
+        }
     }
 }

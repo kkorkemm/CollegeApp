@@ -27,6 +27,8 @@ namespace CollegeApp
         public System.DateTime BeginDate { get; set; }
         public System.DateTime FinishDate { get; set; }
         public bool Active { get; set; }
+
+        public string IsActive => Active ? "Активна" : "Заблокирована";
     
         public virtual Special Special { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
