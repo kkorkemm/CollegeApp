@@ -1,0 +1,153 @@
+﻿<Page x:Class="CollegeApp.StudentAddEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentAddEditPage">
+
+    <Grid Margin="25">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left">
+
+            <TextBlock Text="Добавить студента"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Margin="0 0 0 30"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <Image Height="auto"
+                           VerticalAlignment="Top"
+                           x:Name="ImageUser">
+                        <Image.Source>
+                            <Binding Path="UserPhoto">
+                                <Binding.TargetNullValue>
+                                    <ImageSource>
+                                        Resources/no photo.jpg
+                                    </ImageSource>
+                                </Binding.TargetNullValue>
+                            </Binding>
+                        </Image.Source>
+                    </Image>
+
+                    <Button x:Name="BtnAddPhoto"
+                            Content="Загрузить фотографию"
+                            Click="BtnAddPhoto_Click"
+                            Margin="0 20 0 0"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="30 0 0 0">
+                    <TextBox materialDesign:HintAssist.Hint="Фамилия"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             Text="{Binding Surname}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Имя"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             Text="{Binding Name}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Отчество"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             Text="{Binding LastName}"/>
+
+                    <ComboBox x:Name="ComboGender"
+                              materialDesign:HintAssist.Hint="Пол"
+                              DisplayMemberPath="GenderName"
+                              Margin="0 0 0 10"
+                              Width="300"
+                              SelectedItem="{Binding Gender}"/>
+
+                    <DatePicker materialDesign:HintAssist.Hint="Дата рождения"
+                                x:Name="DateBirth"
+                                Margin="0 0 0 10"
+                                Width="300"
+                                SelectedDate="{Binding BirthDate}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Логин"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             Text="{Binding Login}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Пароль"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             Text="{Binding Password}"/>
+
+                    <ComboBox x:Name="ComboGruppa"
+                              materialDesign:HintAssist.Hint="Группа"
+                              DisplayMemberPath="GruppaName"
+                              Width="300"
+                              SelectedItem="{Binding Student.Gruppa}"
+                              Margin="0 0 0 10"/>
+
+                    <TextBox x:Name="TextZach"
+                             materialDesign:HintAssist.Hint="Номер зачетки"
+                             Text="{Binding Student.Zachetka}"
+                             Width="300"
+                             Margin="0 0 0 10"
+                             HorizontalAlignment="Left"/>
+
+                    <CheckBox x:Name="CheckActive"
+                              Content="Активировать"
+                              IsChecked="{Binding Active}"
+                              Width="200"
+                              Margin="0 0 0 10"
+                              HorizontalAlignment="Left"/>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Сохранить"
+                    x:Name="BtnAddStudent"
+                    Click="BtnAddStudent_Click"/>
+
+            <Button Content="Назад"
+                    x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
+
+    </Grid>
+</Page>

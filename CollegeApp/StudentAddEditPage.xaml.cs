@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,16 +7,17 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
+
 namespace CollegeApp
 {
     /// <summary>
-    /// Логика взаимодействия для TeacherAddPage.xaml
+    /// Логика взаимодействия для StudentAddEditPage.xaml
     /// </summary>
-    public partial class TeacherAddPage : Page
+    public partial class StudentAddEditPage : Page
     {
         User currentUser = new User();
 
-        public TeacherAddPage(User selectedUser)
+        public StudentAddEditPage(User selectedUser)
         {
             InitializeComponent();
 
@@ -27,10 +27,10 @@ namespace CollegeApp
             DataContext = currentUser;
 
             ComboGender.ItemsSource = CollegeDBEntities.GetContext().Gender.ToList();
-            ComboOtdel.ItemsSource = CollegeDBEntities.GetContext().Otdel.ToList();
+            ComboGruppa.ItemsSource = CollegeDBEntities.GetContext().Gruppa.ToList();
         }
 
-        private void BtnAddTeacher_Click(object sender, RoutedEventArgs e)
+        private void BtnAddStudent_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
 
@@ -38,16 +38,19 @@ namespace CollegeApp
                 errors.AppendLine("Введите фамилию");
             if (string.IsNullOrWhiteSpace(currentUser.Name))
                 errors.AppendLine("Введите имя");
+            if (currentUser.Gender == null)
+                errors.AppendLine("Укажите пол");
+            if (currentUser.BirthDate == null)
+                errors.AppendLine("Укажите дату рождения");
             if (string.IsNullOrWhiteSpace(currentUser.Login))
                 errors.AppendLine("Введите логин");
             if (string.IsNullOrWhiteSpace(currentUser.Password))
                 errors.AppendLine("Введите пароль");
-            if (currentUser.Gender == null)
-                errors.AppendLine("Укажите пол");
-            if (ComboOtdel.SelectedItem == null)
-                errors.AppendLine("Укажите отделение");
-            if (currentUser.BirthDate == null)
-                errors.AppendLine("Укажите дату рождения");
+
+            if (ComboGruppa.SelectedItem == null)
+                errors.AppendLine("Укажите группу");
+            if (string.IsNullOrWhiteSpace(TextZach.Text))
+                errors.AppendLine("Введите номер зачетки");
 
             if (errors.Length > 0)
             {
@@ -56,37 +59,39 @@ namespace CollegeApp
             }
             else
             {
-                currentUser.RoleID = 7;
+                currentUser.RoleID = 8;
 
                 if (currentUser.UserID == 0)
                 {
                     CollegeDBEntities.GetContext().User.Add(currentUser);
 
-                    Teacher currentTeacher = new Teacher();
-                    currentTeacher.UserID = currentUser.UserID;
-                    currentTeacher.Otdel = ComboOtdel.SelectedItem as Otdel;
-                    currentTeacher.HasHighEducation = (bool)CheckHigh.IsChecked;
+                    Student student = new Student
+                    {
+                        UserID = currentUser.UserID,
+                        Gruppa = ComboGruppa.SelectedItem as Gruppa,
+                        Zachetka = TextZach.Text
+                    };
 
-                    CollegeDBEntities.GetContext().Teacher.Add(currentTeacher);
+                    CollegeDBEntities.GetContext().Student.Add(student);
                 }
-   
+
                 try
                 {
                     CollegeDBEntities.GetContext().SaveChanges();
-                    MessageBox.Show("Информация успешно сохранена!");
-
-                    NavigationManager.TeacherFrame.Navigate(new TeacherViewPage());
+                    MessageBox.Show("Информация сохранена успешно!", "Внимание!");
+                    NavigationManager.StudentFrame.Navigate(new StudentViewPage());
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Произвошла ошибка при попытке сохранения данных");
+                    MessageBox.Show(ex.Message);
                 }
             }
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationManager.TeacherFrame.Navigate(new TeacherViewPage());
+            NavigationManager.StudentFrame.Navigate(new StudentViewPage());
         }
 
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)

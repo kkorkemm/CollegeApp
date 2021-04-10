@@ -1,0 +1,108 @@
+﻿<Page x:Class="CollegeApp.StudentProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentProfilePage">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Просмотр профиля студента"
+                   FontSize="26"
+                   Grid.ColumnSpan="3"
+                   FontWeight="SemiBold"
+                   Margin="0 0 0 30"/>
+
+        <Image Grid.Row="1"
+               Width="200"
+               Height="auto"
+               VerticalAlignment="Top">
+            <Image.Source>
+                <Binding Path="UserPhoto">
+                    <Binding.TargetNullValue>
+                        <ImageSource>
+                            Resources/no photo.jpg
+                        </ImageSource>
+                    </Binding.TargetNullValue>
+                </Binding>
+            </Image.Source>
+        </Image>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="ФИО: "/>
+                <TextBlock Text="{Binding FullName}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Пол: "/>
+                <TextBlock Text="{Binding Gender.GenderName}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Дата рождения: "/>
+                <TextBlock Text="{Binding BirthDate, StringFormat=dd.MM.yyyy}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Логин: "/>
+                <TextBlock Text="{Binding Login}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Группа: "/>
+                <TextBlock Text="{Binding Student.Gruppa.GruppaName}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Номер зачетки: "/>
+                <TextBlock Text="{Binding Student.Zachetka}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Text="Статус: "/>
+                <TextBlock Text="{Binding IsActive}"/>
+            </StackPanel>
+        </StackPanel>
+
+
+        <Grid Margin="10"
+              Grid.Row="2"
+              Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BtnEdit"
+                    Click="BtnEdit_Click"
+                Content="Редактировать"/>
+
+            <Button x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                Content="Назад"
+                Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
+
+    </Grid>
+</Page>

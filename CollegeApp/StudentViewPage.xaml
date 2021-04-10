@@ -1,0 +1,102 @@
+﻿<Page x:Class="CollegeApp.StudentViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentViewPage">
+
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список студентов"
+                   FontSize="24"
+                   FontWeight="SemiBold"
+                   Margin="0 0 0 10"/>
+
+        <WrapPanel Grid.Row="1"
+                   Orientation="Horizontal"
+                   HorizontalAlignment="Left">
+            <TextBox x:Name="TextUserName"
+                     TextChanged="TextUserName_TextChanged"
+                     Width="300"
+                     Margin="0 0 10 10"
+                     materialDesign:HintAssist.Hint="ФИО студента"/>
+            <ComboBox x:Name="ComboGruppa"
+                      SelectionChanged="ComboGruppa_SelectionChanged"
+                      DisplayMemberPath="GruppaName"
+                      Width="200"
+                      Margin="0 0 10 10"
+                      materialDesign:HintAssist.Hint="Группа"/>
+            <TextBox x:Name="TextZachetka"
+                     TextChanged="TextZachetka_TextChanged"
+                     Width="200"
+                     Margin="0 0 10 10"
+                     materialDesign:HintAssist.Hint="Номер зачетки"/>
+            <ComboBox x:Name="ComboGender"
+                      DisplayMemberPath="GenderName"
+                      SelectionChanged="ComboGender_SelectionChanged"
+                      Width="200"
+                      Margin="0 0 10 10"
+                      materialDesign:HintAssist.Hint="Пол"/>
+            <DatePicker x:Name="DateBirth"
+                        SelectedDateChanged="DateBirth_SelectedDateChanged"
+                        Width="200"
+                        Margin="0 0 10 10"
+                        materialDesign:HintAssist.Hint="Дата рождения"/>
+        </WrapPanel>
+
+        <DataGrid Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  x:Name="DGridStudent"
+                  Margin="0 30 0 10">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="ФИО"
+                                    Binding="{Binding FullName}"
+                                    Width="2*"/>
+                <DataGridTextColumn Header="Группа"
+                                    Binding="{Binding Student.Gruppa.GruppaName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Зачетка"
+                                    Binding="{Binding Student.Zachetka}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Пол"
+                                    Binding="{Binding Gender.GenderName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Дата рождения"
+                                    Binding="{Binding BirthDate, StringFormat=dd.MM.yyyy}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnView"
+                                    Click="BtnView_Click"
+                                    Content="Посмотреть"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button Content="Добавить студента"
+                x:Name="BtnAddStudent"
+                Click="BtnAddStudent_Click"
+                HorizontalAlignment="Left"
+                Grid.Row="3"
+                Width="200"/>
+
+    </Grid>
+</Page>
