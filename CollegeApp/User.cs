@@ -22,6 +22,8 @@ namespace CollegeApp
 
         public string FullName => $"{Surname} {Name} {LastName}";
 
+        public string IsActive => Active ? "Активен" : "Заблокирован";
+
         public int UserID { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
@@ -33,7 +35,8 @@ namespace CollegeApp
         public byte RoleID { get; set; }
         public byte[] UserPhoto { get; set; }
         public bool Active { get; set; }
-    
+   
+
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonPlan> LessonPlan { get; set; }

@@ -9,54 +9,86 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TeacherViewPage">
 
-    <Grid>
+    <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Список преподавателей"
-                   FontSize="26"
-                   FontWeight="DemiBold"
-                   TextAlignment="Center"
+        <TextBlock Text="Список преподавателей"
+                   FontSize="24"
+                   FontWeight="SemiBold"
                    Margin="0 0 0 10"/>
-            <Button x:Name="BtnAddTeacher"
-                    Click="BtnAddTeacher_Click"
-                    Content="Добавить преподавателя"
-                    Grid.Row="1"
-                    HorizontalAlignment="Center"/>
-        </Grid>
-
+            
         <WrapPanel Grid.Row="1"
                    Orientation="Horizontal"
-                   HorizontalAlignment="Center">
+                   HorizontalAlignment="Left">
             <TextBox x:Name="TextUserName"
+                     TextChanged="TextUserName_TextChanged"
                      Width="300"
-                     Margin="10"
+                     Margin="0 0 10 10"
                      materialDesign:HintAssist.Hint="ФИО преподавателя"/>
-            <ComboBox x:Name="ComboGender"
-                      Width="150"
-                      Margin="10"
-                      materialDesign:HintAssist.Hint="Пол"/>
             <ComboBox x:Name="ComboOtdel"
-                      Width="150"
-                      Margin="10"
+                      SelectionChanged="ComboOtdel_SelectionChanged"
+                      DisplayMemberPath="OtdelName"
+                      Width="200"
+                      Margin="0 0 10 10"
                       materialDesign:HintAssist.Hint="Отделение"/>
+            <ComboBox x:Name="ComboGender"
+                      DisplayMemberPath="GenderName"
+                      SelectionChanged="ComboGender_SelectionChanged"
+                      Width="200"
+                      Margin="0 0 10 10"
+                      materialDesign:HintAssist.Hint="Пол"/>
             <DatePicker x:Name="DateBirth"
-                        Width="150"
-                        Margin="10"
+                        SelectedDateChanged="DateBirth_SelectedDateChanged"
+                        Width="200"
+                        Margin="0 0 10 10"
                         materialDesign:HintAssist.Hint="Дата рождения"/>
         </WrapPanel>
 
-        <ListView Grid.Row="2">
+        <DataGrid Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  x:Name="DGridTeacher"
+                  Margin="0 30 0 10">
+
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="ФИО"
+                                    Binding="{Binding FullName}"
+                                    Width="2*"/>
+                <DataGridTextColumn Header="Отделение"
+                                    Binding="{Binding Teacher.Otdel.OtdelName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Пол"
+                                    Binding="{Binding Gender.GenderName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Дата рождения"
+                                    Binding="{Binding BirthDate, StringFormat=dd.MM.yyyy}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnEdit"
+                                    Click="BtnEdit_Click"
+                                    Content="Посмотреть"
+                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
             
-        </ListView>
-        
+        </DataGrid>
+
+        <Button Content="Добавить преподавателя"
+                x:Name="BtnAddTeacher"
+                Click="BtnAddTeacher_Click"
+                HorizontalAlignment="Left"
+                Grid.Row="3"
+                Width="200"/>
+
     </Grid>
 </Page>

@@ -9,12 +9,6 @@
       Title="TeacherViewPage">
 
     <Grid>
-        <Button x:Name="BtnBack" 
-                Click="BtnBack_Click"
-                Content="Назад" 
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Style="{StaticResource MaterialDesignFlatAccentButton}"/>
         <Frame x:Name="teacherFrame"
                ContentRendered="teacherFrame_ContentRendered"/>
     </Grid>

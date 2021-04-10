@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeApp
 {
@@ -43,17 +38,15 @@ namespace CollegeApp
                 errors.AppendLine("Введите фамилию");
             if (string.IsNullOrWhiteSpace(currentUser.Name))
                 errors.AppendLine("Введите имя");
-            if (string.IsNullOrWhiteSpace(currentUser.LastName))
-                errors.AppendLine("Введите отчество");
             if (string.IsNullOrWhiteSpace(currentUser.Login))
                 errors.AppendLine("Введите логин");
             if (string.IsNullOrWhiteSpace(currentUser.Password))
                 errors.AppendLine("Введите пароль");
-            if (ComboGender.SelectedItem == null)
+            if (currentUser.Gender == null)
                 errors.AppendLine("Укажите пол");
             if (ComboOtdel.SelectedItem == null)
                 errors.AppendLine("Укажите отделение");
-            if (DateBirth.SelectedDate == null)
+            if (currentUser.BirthDate == null)
                 errors.AppendLine("Укажите дату рождения");
 
             if (errors.Length > 0)
@@ -65,12 +58,21 @@ namespace CollegeApp
             {
                 currentUser.RoleID = 7;
 
-                
+                if (currentUser.UserID == 0)
+                {
+                    CollegeDBEntities.GetContext().User.Add(currentUser);
 
+                    Teacher currentTeacher = new Teacher();
+                    currentTeacher.UserID = currentUser.UserID;
+                    currentTeacher.Otdel = ComboOtdel.SelectedItem as Otdel;
+                    currentTeacher.HasHighEducation = (bool)CheckHigh.IsChecked;
 
+                    CollegeDBEntities.GetContext().Teacher.Add(currentTeacher);
+                }
+   
                 try
                 {
-                    //CollegeDBEntities.GetContext().SaveChanges();
+                    CollegeDBEntities.GetContext().SaveChanges();
                     MessageBox.Show("Информация успешно сохранена!");
 
                     NavigationManager.TeacherFrame.Navigate(new TeacherViewPage());
@@ -79,6 +81,35 @@ namespace CollegeApp
                 {
                     MessageBox.Show("Произвошла ошибка при попытке сохранения данных");
                 }
+            }
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.TeacherFrame.Navigate(new TeacherViewPage());
+        }
+
+        private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog()
+            {
+                Filter = "Image Files(*.png; *.jpeg; *.jpg) | *.png; *.jpeg; *.jpg"
+            };
+
+            if (fileDialog.ShowDialog() == true)
+            {
+
+                byte[] imageData;
+                using (FileStream fs = new FileStream(fileDialog.FileName, FileMode.Open))
+                {
+                    imageData = new byte[fs.Length];
+                    fs.Read(imageData, 0, imageData.Length);
+                }
+
+                currentUser.UserPhoto = imageData;
+
+                //ImageUser.Source = new BitmapImage(new Uri(fileDialog.FileName));
+                ImageUser.Source = new BitmapImage(new Uri(fileDialog.FileName));
             }
         }
     }

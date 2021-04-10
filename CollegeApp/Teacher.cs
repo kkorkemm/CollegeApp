@@ -17,7 +17,9 @@ namespace CollegeApp
         public int UserID { get; set; }
         public int OtdelID { get; set; }
         public bool HasHighEducation { get; set; }
-    
+
+        public string HighEducation => HasHighEducation ? "Есть" : "Нет";
+
         public virtual Otdel Otdel { get; set; }
         public virtual User User { get; set; }
     }

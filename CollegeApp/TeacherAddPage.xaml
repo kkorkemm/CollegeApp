@@ -9,8 +9,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TeacherAddPage">
 
-    <Grid>
+    <Grid Margin="25">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -18,79 +23,131 @@
         </Grid.RowDefinitions>
     
         <StackPanel Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left">
             
             <TextBlock Text="Добавить преподавателя"
-                   FontSize="24"
-                   Margin="0 0 0 30"/>
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Margin="0 0 0 30"/>
 
-            <WrapPanel Orientation="Horizontal"
-                       Margin="0 0 0 10">
-                <TextBox materialDesign:HintAssist.Hint="Фамилия"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Width="300"
-                     Margin="0 0 10 10"
-                     Text="{Binding Surname}"/>
-                <TextBox materialDesign:HintAssist.Hint="Имя"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     Width="300"
-                     Margin="0 0 10 10"
-                     Text="{Binding Name}"/>
-                <TextBox materialDesign:HintAssist.Hint="Отчество"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <Image Height="auto"
+                           VerticalAlignment="Top"
+                           x:Name="ImageUser">
+                        <Image.Source>
+                            <Binding Path="UserPhoto">
+                                <Binding.TargetNullValue>
+                                    <ImageSource>
+                                        Resources/no photo.jpg
+                                    </ImageSource>
+                                </Binding.TargetNullValue>
+                            </Binding>
+                        </Image.Source>
+                    </Image>
+
+                    <Button x:Name="BtnAddPhoto"
+                            Content="Загрузить фотографию"
+                            Click="BtnAddPhoto_Click"
+                            Margin="0 20 0 0"/>
+
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1"
+                            Margin="30 0 0 0">
+                    <TextBox materialDesign:HintAssist.Hint="Фамилия"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300"
                      Margin="0 0 0 10"
-                    Text="{Binding LastName}"/>
-            </WrapPanel>
-            <WrapPanel Orientation="Horizontal"
-                       Margin="0 0 0 15">
-                <ComboBox x:Name="ComboGender"
+                     Text="{Binding Surname}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Имя"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 0 10"
+                     Text="{Binding Name}"/>
+
+                    <TextBox materialDesign:HintAssist.Hint="Отчество"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Width="300"
+                     Margin="0 0 0 10"
+                     Text="{Binding LastName}"/>
+
+                    <ComboBox x:Name="ComboGender"
                       materialDesign:HintAssist.Hint="Пол"
                       DisplayMemberPath="GenderName"
-                      Margin="0 0 10 10"
+                      Margin="0 0 0 10"
                       Width="300"
                       SelectedItem="{Binding Gender}"/>
-                <DatePicker materialDesign:HintAssist.Hint="Дата рождения"
+
+                    <DatePicker materialDesign:HintAssist.Hint="Дата рождения"
                         x:Name="DateBirth"
                         Margin="0 0 0 10"
                         Width="300"
                         SelectedDate="{Binding BirthDate}"/>
-            </WrapPanel>
-            <WrapPanel Orientation="Horizontal"
-                       Margin="0 0 0 15">
-                <TextBox materialDesign:HintAssist.Hint="Логин"
+
+                    <TextBox materialDesign:HintAssist.Hint="Логин"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300"
-                     Margin="0 0 10 10"
+                     Margin="0 0 0 10"
                      Text="{Binding Login}"/>
-                <TextBox materialDesign:HintAssist.Hint="Пароль"
+
+                    <TextBox materialDesign:HintAssist.Hint="Пароль"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      Width="300"
                      Margin="0 0 0 10"
                      Text="{Binding Password}"/>
-            </WrapPanel>
-            <ComboBox x:Name="ComboOtdel"
+
+                    <ComboBox x:Name="ComboOtdel"
                       materialDesign:HintAssist.Hint="Отделение"
                       DisplayMemberPath="OtdelName"
                       Width="300"
-                      HorizontalAlignment="Left"
                       SelectedItem="{Binding Teacher.Otdel}"
                       Margin="0 0 0 10"/>
 
-            <CheckBox x:Name="CheckHigh"
+                    <CheckBox x:Name="CheckHigh"
                       Content="Имеет высшее образование"
                       IsChecked="{Binding Teacher.HasHignEducation}"
                       Width="200"
+                      Margin="0 0 0 10"
                       HorizontalAlignment="Left"/>
+
+                    <CheckBox x:Name="CheckActive"
+                      Content="Активировать"
+                      IsChecked="{Binding Active}"
+                      Width="200"
+                      Margin="0 0 0 10"
+                      HorizontalAlignment="Left"/>
+                </StackPanel>
+                
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
             <Button Content="Сохранить"
                     x:Name="BtnAddTeacher"
-                    Click="BtnAddTeacher_Click"
-                    Width="200"
-                    HorizontalAlignment="Left"
-                    Margin="0 40 0 0"/>
-        </StackPanel>
+                    Click="BtnAddTeacher_Click"/>
 
+            <Button Content="Назад"
+                    x:Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
+   
     </Grid>
 </Page>

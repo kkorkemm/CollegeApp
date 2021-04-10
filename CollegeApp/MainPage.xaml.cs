@@ -19,10 +19,9 @@ namespace CollegeApp
             otdelTabFrame.Navigate(new OtdelPage());
             gruppaTabFrame.Navigate(new GruppaPage());
             subjectTabFrame.Navigate(new SubjectPage());
-            specialTabFrame.NavigationService.Navigate(new SpecialPage());
-
+            specialTabFrame.Navigate(new SpecialPage());
             classroomTabFrame.Navigate(new ClassroomPage());
-            NavigationManager.ClassroomFrame = classroomTabFrame;
+            teacherTabFrame.Navigate(new TeacherPage());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
@@ -32,14 +31,11 @@ namespace CollegeApp
 
         private void otdelTabFrame_ContentRendered(object sender, EventArgs e)
         {
-            //if (NavigationManager.OtdelFrame.CanGoBack)
-            //    BtnBackOtdel.Visibility = Visibility.Visible;
-            //else
-            //    BtnBackOtdel.Visibility = Visibility.Visible;
+           
         }
         private void BtnBackOtdel_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationManager.OtdelFrame.GoBack();
+            
         }
     }
 }
