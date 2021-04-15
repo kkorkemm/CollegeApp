@@ -23,20 +23,12 @@ namespace CollegeApp
             classroomTabFrame.Navigate(new ClassroomPage());
             teacherTabFrame.Navigate(new TeacherPage());
             studentTabFrame.Navigate(new StudentPage());
+            planTabFrame.Navigate(new PlanPage());
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationManager.MainFrame.Navigate(new LoginPage());
-        }
-
-        private void otdelTabFrame_ContentRendered(object sender, EventArgs e)
-        {
-           
-        }
-        private void BtnBackOtdel_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -152,11 +152,32 @@
     <Compile Include="OtdelViewPage.xaml.cs">
       <DependentUpon>OtdelViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlanPage.xaml.cs">
+      <DependentUpon>PlanPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlanTeacherAddPage.xaml.cs">
+      <DependentUpon>PlanTeacherAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlanTeacherPage.xaml.cs">
+      <DependentUpon>PlanTeacherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlanViewPage.xaml.cs">
+      <DependentUpon>PlanViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Schedule.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleAddPage.xaml.cs">
+      <DependentUpon>ScheduleAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SchedulePage.xaml.cs">
+      <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleViewPage.xaml.cs">
+      <DependentUpon>ScheduleViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Special.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -292,6 +313,34 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PlanPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanTeacherAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanTeacherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SpecialAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -407,6 +456,7 @@
     </Content>
     <Resource Include="Resources\no photo.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

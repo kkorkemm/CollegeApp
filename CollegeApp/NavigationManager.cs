@@ -12,5 +12,7 @@ namespace CollegeApp
         public static Frame SpecialFrame { get; set; }
         public static Frame SubjectFrame { get; set; }
         public static Frame ClassroomFrame { get; set; }
+        public static Frame PlanFrame { get; set; }
+        public static Frame ScheduleFrame { get; set; }
     }
 }

@@ -1,0 +1,73 @@
+﻿<Page x:Class="CollegeApp.ScheduleViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ScheduleViewPage">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TextTeacherName"
+                   Text="Расписание преповадателя: "
+                   FontSize="24"
+                   FontWeight="SemiBold"/>
+
+        <ListView Grid.Row="1"
+                  x:Name="listSchedule"
+                  Margin="0 30 0 10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    
+                    <StackPanel>
+                        <TextBlock Text="{Binding Day.DayName}"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Margin="0 0 0 20"/>
+                        <TextBlock Text="{Binding LessonPlan.Gruppa.GruppaName}"
+                                   FontWeight="SemiBold"
+                                   Margin="0 0 0 10"/>
+
+                        <DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding LessonNum.LessonNumName}"
+                                                    Width="*"/>
+                                <DataGridTextColumn Binding="{Binding LessonPlan.Subject.SubjectName}"
+                                                    Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Classroom.ClassroomName}"
+                                                    Width="*"/>
+                                <DataGridTemplateColumn Width="auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="BtnDelete"
+                                                    Click="BtnDelete_Click"
+                                                    Content="Удалить"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="BtnBack"
+                Content="Назад"
+                Click="BtnBack_Click"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Left"
+                Grid.Row="2"/>
+
+    </Grid>
+</Page>

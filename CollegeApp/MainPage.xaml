@@ -50,6 +50,7 @@
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
                      VerticalAlignment="Center">
+                <Frame x:Name="planTabFrame"/>
             </TabItem>
             <TabItem Header="Преподаватели"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"

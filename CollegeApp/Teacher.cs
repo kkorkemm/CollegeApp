@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace CollegeApp
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Teacher
     {
         public int UserID { get; set; }
@@ -20,6 +19,8 @@ namespace CollegeApp
 
         public string HighEducation => HasHighEducation ? "Есть" : "Нет";
 
+        public int CountOfPlan => CollegeDBEntities.GetContext().LessonPlan.Where(p => p.UserID == UserID).Count();
+        public int CountOfHours { get; set; }
         public virtual Otdel Otdel { get; set; }
         public virtual User User { get; set; }
     }
