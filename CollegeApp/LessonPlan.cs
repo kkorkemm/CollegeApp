@@ -24,7 +24,9 @@ namespace CollegeApp
         public int UserID { get; set; }
         public int SubjectID { get; set; }
         public int GruppaID { get; set; }
-    
+
+        public string LessonPlanName => Gruppa.GruppaName + " -> " + Subject.SubjectName;
+
         public virtual Gruppa Gruppa { get; set; }
         public virtual Subject Subject { get; set; }
         public virtual User User { get; set; }

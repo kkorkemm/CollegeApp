@@ -20,9 +20,20 @@ namespace CollegeApp
     /// </summary>
     public partial class ScheduleViewPage : Page
     {
-        public ScheduleViewPage()
+        Schedule schedule = new Schedule();
+        User currentTeacher = new User();
+
+        public ScheduleViewPage(User teacher)
         {
             InitializeComponent();
+
+            if (teacher != null)
+                currentTeacher = teacher;
+
+            TextTeacherName.Text += currentTeacher.FullName;
+            DataContext = schedule;
+
+            DGridSchedule.ItemsSource = CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.UserID == currentTeacher.UserID).ToList();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -32,7 +43,12 @@ namespace CollegeApp
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            NavigationManager.ScheduleFrame.Navigate(new PlanViewPage());
+            NavigationManager.PlanFrame.Navigate(new PlanViewPage());
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationManager.PlanFrame.Navigate(new ScheduleAddPage(currentTeacher));
         }
     }
 }

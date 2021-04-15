@@ -23,7 +23,7 @@ namespace CollegeApp
 
         private void BtnSchedule_Click(object sender, RoutedEventArgs e)
         {
-            NavigationManager.PlanFrame.Navigate(new SchedulePage());
+            NavigationManager.PlanFrame.Navigate(new ScheduleViewPage((sender as Button).DataContext as User));
         }
     }
 }

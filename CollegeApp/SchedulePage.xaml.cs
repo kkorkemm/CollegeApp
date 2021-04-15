@@ -17,7 +17,7 @@ namespace CollegeApp
         public SchedulePage()
         {
             InitializeComponent();
-            scheduleFrame.Navigate(new ScheduleViewPage());
+            //scheduleFrame.Navigate(new ScheduleViewPage());
             NavigationManager.ScheduleFrame = scheduleFrame;
         }
     }

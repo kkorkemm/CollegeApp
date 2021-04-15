@@ -4,11 +4,77 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CollegeApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ScheduleAddPage">
 
-    <Grid>
+    <Grid Margin="25">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TextTeacherName"
+                   Text="Расписание для преподавателя: "
+                   FontSize="24"
+                   FontWeight="SemiBold"
+                   Grid.ColumnSpan="2"/>
+
+        <StackPanel Grid.Row="1"
+                    Margin="0 30 0 10">
+
+            <ComboBox x:Name="ComboLessonPlan"
+                      DisplayMemberPath="LessonPlanName"
+                      SelectedItem="{Binding LessonPlan}"
+                      materialDesign:HintAssist.Hint="Пункт плана"
+                      Margin="0 0 0 20"/>
+
+            <ComboBox x:Name="ComboLessonNum"
+                      DisplayMemberPath="LessonNumName"
+                      SelectedItem="{Binding LessonNum}"
+                      materialDesign:HintAssist.Hint="Пара"
+                      Margin="0 0 0 20"/>
+
+            <ComboBox x:Name="ComboClassroom"
+                      DisplayMemberPath="ClassroomName"
+                      SelectedItem="{Binding Classroom}"
+                      materialDesign:HintAssist.Hint="Аудитория"
+                      Margin="0 0 0 20"/>
+
+            <ComboBox x:Name="ComboDay"
+                      DisplayMemberPath="DayName"
+                      SelectedItem="{Binding Day}"
+                      materialDesign:HintAssist.Hint="День недели"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BtnSave"
+                    Click="BtnSave_Click"
+                    Content="Сохранить"/>
+
+            <Button Name="BtnBack"
+                    Click="BtnBack_Click"
+                    Content="Назад"
+                    Grid.Column="2"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </Grid>
         
     </Grid>
 </Page>

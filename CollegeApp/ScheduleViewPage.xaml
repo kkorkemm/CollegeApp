@@ -21,53 +21,52 @@
                    FontSize="24"
                    FontWeight="SemiBold"/>
 
-        <ListView Grid.Row="1"
-                  x:Name="listSchedule"
+        <DataGrid x:Name="DGridSchedule"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Grid.Row="1"
                   Margin="0 30 0 10">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    
-                    <StackPanel>
-                        <TextBlock Text="{Binding Day.DayName}"
-                                   FontSize="18"
-                                   FontWeight="SemiBold"
-                                   Margin="0 0 0 20"/>
-                        <TextBlock Text="{Binding LessonPlan.Gruppa.GruppaName}"
-                                   FontWeight="SemiBold"
-                                   Margin="0 0 0 10"/>
 
-                        <DataGrid>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding LessonNum.LessonNumName}"
-                                                    Width="*"/>
-                                <DataGridTextColumn Binding="{Binding LessonPlan.Subject.SubjectName}"
-                                                    Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Classroom.ClassroomName}"
-                                                    Width="*"/>
-                                <DataGridTemplateColumn Width="auto">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button x:Name="BtnDelete"
-                                                    Click="BtnDelete_Click"
-                                                    Content="Удалить"
-                                                    Style="{StaticResource MaterialDesignFlatButton}"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                    
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="День недели"
+                                    Binding="{Binding Day.DayName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Пара"
+                                    Binding="{Binding LessonNum.LessonNumName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Группа"
+                                    Binding="{Binding LessonPlan.Gruppa.GruppaName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Предмет"
+                                    Binding="{Binding LessonPlan.Subject.SubjectName}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Аудитория"
+                                    Binding="{Binding Classroom.ClassroomName}"
+                                    Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnDelete"
+                                    Click="BtnDelete_Click"
+                                    Content="Удалить"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
 
-        <Button x:Name="BtnBack"
-                Content="Назад"
-                Click="BtnBack_Click"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                HorizontalAlignment="Left"
-                Grid.Row="2"/>
+        <Grid Grid.Row="2">
+            <Button x:Name="BtnBack"
+                    Content="Назад"
+                    Click="BtnBack_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    HorizontalAlignment="Left"/>
+            <Button x:Name="BtnAdd"
+                    Content="Добавить"
+                    Click="BtnAdd_Click"
+                    HorizontalAlignment="Right"/>
+        </Grid>
 
     </Grid>
 </Page>
