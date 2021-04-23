@@ -121,6 +121,12 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPageForAdmin.xaml.cs">
+      <DependentUpon>MainPageForAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageAdminPage.xaml.cs">
+      <DependentUpon>MessageAdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +181,12 @@
     </Compile>
     <Compile Include="SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleStudentPage.xaml.cs">
+      <DependentUpon>ScheduleStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleTeacherPage.xaml.cs">
+      <DependentUpon>ScheduleTeacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ScheduleViewPage.xaml.cs">
       <DependentUpon>ScheduleViewPage.xaml</DependentUpon>
@@ -285,6 +297,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MainPageForAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -297,6 +313,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MessageAdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OtdelAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -334,6 +354,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleTeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeApp
 {
@@ -30,15 +20,41 @@ namespace CollegeApp
             if (teacher != null)
                 currentTeacher = teacher;
 
+            if (CollegeDBEntities.currentUser.RoleID == 7 || CollegeDBEntities.currentUser.RoleID == 8)
+            {
+                BtnAdd.Visibility = Visibility.Hidden;
+                BtnBack.Visibility = Visibility.Hidden;
+            }
+
+            if (CollegeDBEntities.currentUser.RoleID == 8)
+                TextTeacherName.Text = "Расписание для студента: ";
+
             TextTeacherName.Text += currentTeacher.FullName;
             DataContext = schedule;
 
-            DGridSchedule.ItemsSource = CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.UserID == currentTeacher.UserID).ToList();
+            DGridSchedule.ItemsSource = CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.UserID == currentTeacher.UserID).OrderBy(p => p.DayID).ToList();
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var removingSchedule = DGridSchedule.SelectedItem as Schedule;
 
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите удалить пункт из расписания?", "Внимание!", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    CollegeDBEntities.GetContext().Schedule.Remove(removingSchedule);
+                    CollegeDBEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные успешно удалены!");
+                    DGridSchedule.ItemsSource = CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.UserID == currentTeacher.UserID).OrderBy(p => p.DayID).ToList();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

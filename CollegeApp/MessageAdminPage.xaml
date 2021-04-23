@@ -1,0 +1,73 @@
+﻿<Page x:Class="CollegeApp.MessageAdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CollegeApp"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MessageAdminPage">
+
+    <Grid Margin="25">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>  <!--0-->
+            <RowDefinition Height="auto"/>  <!--1-->
+            <RowDefinition Height="auto"/>  <!--2-->
+            <RowDefinition/>                <!--3-->
+            <RowDefinition Height="auto"/>  <!--4-->
+            <RowDefinition Height="auto"/>  <!--5-->
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Сообщить о проблеме"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                   Margin="0 0 0 20"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1">
+
+            <TextBox x:Name="TextMail"
+                     materialDesign:HintAssist.Hint="Укажите вашу почту"
+                     Width="300"
+                     Margin="0 0 20 0"/>
+
+            <PasswordBox x:Name="TextPass"
+                     materialDesign:HintAssist.Hint="Укажите пароль от почты"
+                     Width="300"/>
+        </StackPanel>
+
+        <TextBox x:Name="TextTitle"
+                 materialDesign:HintAssist.Hint="Тема"
+                 Grid.Row="2"
+                 Margin="0 20 0 20"/>
+
+        <TextBox x:Name="TextMessage"
+                     materialDesign:HintAssist.Hint="Опишите проблему..."
+                     Grid.Row="3"/>
+
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    Margin="0 20 0 20">
+
+            <TextBox x:Name="TextAttach"
+                     materialDesign:HintAssist.Hint="Путь к файлу"
+                     Width="300"
+                     Margin="0 0 30 0"/>
+
+            <Button x:Name="BtnAddAttach"
+                    Content="Прикрепить файлы"
+                    Click="BtnAddAttach_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
+
+        </StackPanel>
+
+        <Button x:Name="BtnSend"
+                Content="Отправить"
+                Click="BtnSend_Click"
+                Grid.Row="5"
+                HorizontalAlignment="Left"/>
+
+    </Grid>
+</Page>

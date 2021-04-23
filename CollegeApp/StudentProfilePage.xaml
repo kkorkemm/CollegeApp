@@ -94,12 +94,13 @@
 
             <Button x:Name="BtnEdit"
                     Click="BtnEdit_Click"
-                Content="Редактировать"/>
+                Content="Редактировать"
+                    />
 
             <Button x:Name="BtnBack"
                     Click="BtnBack_Click"
                 Content="Назад"
-                Grid.Column="2"
+                    Grid.Column="2"
                     Style="{StaticResource MaterialDesignFlatButton}"/>
 
         </Grid>

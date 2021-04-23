@@ -22,8 +22,8 @@ namespace CollegeApp
             this.Teacher = new HashSet<Teacher>();
         }
 
-        public string Status => Active ? "Активно" : "Заблокировано";
-
+        public string IsActive => Active ? "Активировано" : "Заблокировано";
+    
         public int OtdelID { get; set; }
         public string OtdelName { get; set; }
         public bool Active { get; set; }

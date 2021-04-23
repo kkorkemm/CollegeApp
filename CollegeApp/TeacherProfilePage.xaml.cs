@@ -18,6 +18,12 @@ namespace CollegeApp
                 currentTeacher = teacher;
 
             DataContext = currentTeacher;
+
+            if (CollegeDBEntities.currentUser.RoleID == 7 || CollegeDBEntities.currentUser.RoleID == 8)
+            {
+                BtnBack.Visibility = Visibility.Hidden;
+                BtnEdit.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

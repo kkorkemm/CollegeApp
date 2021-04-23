@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CollegeApp
 {
@@ -54,9 +45,22 @@ namespace CollegeApp
             }
             else
             {
+               
                 if (currentGruppa.GruppaID == 0)
-                    CollegeDBEntities.GetContext().Gruppa.Add(currentGruppa);
+                {
+                    int count = CollegeDBEntities.GetContext().Gruppa.Where(p => p.GruppaName == currentGruppa.GruppaName).Count();
 
+                    if (count > 0)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Такая группа уже существует!", "Внимание!", MessageBoxButton.YesNo);
+
+                        if (result == MessageBoxResult.No)
+                            return;
+                    }
+
+                    CollegeDBEntities.GetContext().Gruppa.Add(currentGruppa);
+                }
+                  
                 try
                 {
                     CollegeDBEntities.GetContext().SaveChanges();

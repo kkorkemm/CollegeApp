@@ -9,7 +9,6 @@
 
 namespace CollegeApp
 {
-    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
@@ -28,9 +27,7 @@ namespace CollegeApp
             return context;
         }
 
-        public static string UserFullName;
-        public static string UserRole;
-
+        public static User currentUser;
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

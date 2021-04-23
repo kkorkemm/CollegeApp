@@ -8,10 +8,7 @@
 //------------------------------------------------------------------------------
 
 namespace CollegeApp
-{
-    using System;
-    using System.Collections.Generic;
-    
+{    
     public partial class Schedule
     {
         public int ScheduleID { get; set; }
@@ -19,7 +16,6 @@ namespace CollegeApp
         public byte DayID { get; set; }
         public byte ClassroomID { get; set; }
         public byte LessonNumId { get; set; }
-    
         public virtual Classroom Classroom { get; set; }
         public virtual Day Day { get; set; }
         public virtual LessonNum LessonNum { get; set; }

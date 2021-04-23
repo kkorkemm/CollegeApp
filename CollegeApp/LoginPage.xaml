@@ -32,7 +32,8 @@
             <Button Content="Войти"
                     Width="300"
                     x:Name="BtnLogin"
-                    Click="BtnLogin_Click"/>
+                    Click="BtnLogin_Click"
+                    IsDefault="True"/>
         </StackPanel>
     </Grid>
 </Page>

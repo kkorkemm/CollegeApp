@@ -17,6 +17,12 @@ namespace CollegeApp
             if (student != null)
                 currentUser = student;
 
+            if (CollegeDBEntities.currentUser.RoleID == 8)
+            {
+                BtnEdit.Visibility = Visibility.Hidden;
+                BtnBack.Visibility = Visibility.Hidden;
+            }
+
             DataContext = currentUser;
         }
 

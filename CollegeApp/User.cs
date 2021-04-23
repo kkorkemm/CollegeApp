@@ -9,7 +9,6 @@
 
 namespace CollegeApp
 {
-    using System;
     using System.Collections.Generic;
     
     public partial class User
@@ -20,9 +19,11 @@ namespace CollegeApp
             this.LessonPlan = new HashSet<LessonPlan>();
         }
 
-        public string FullName => $"{Surname} {Name} {LastName}";
+        public string FullName => Surname + " " + Name + " " + LastName;
 
-        public string IsActive => Active ? "Активен" : "Заблокирован";
+        public string IsActive => Active ? "Активирован" : "Заблокирован";
+
+        public bool IsAdmin => RoleID == 5 ? true : false;
 
         public int UserID { get; set; }
         public string Surname { get; set; }
@@ -35,8 +36,7 @@ namespace CollegeApp
         public byte RoleID { get; set; }
         public byte[] UserPhoto { get; set; }
         public bool Active { get; set; }
-   
-
+    
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LessonPlan> LessonPlan { get; set; }

@@ -27,8 +27,7 @@ namespace CollegeApp
                 {
                     if (TextPassword.Password == currentUser.Password)
                     {
-                        CollegeDBEntities.UserFullName = currentUser.FullName;
-                        CollegeDBEntities.UserRole = currentUser.Role.RoleName;
+                        CollegeDBEntities.currentUser = currentUser;
                         NavigationManager.MainFrame.Navigate(new MainPage());
                     }
 

@@ -50,6 +50,19 @@ namespace CollegeApp
             }
             else
             {
+
+                if (CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.GruppaID == schedule.LessonPlan.GruppaID && p.DayID == schedule.Day.DayID && p.LessonNumId == schedule.LessonNum.LessonNumID).Count() > 0)
+                {
+                    MessageBox.Show("Расписание для группы на этот день и пару уже занято!");
+                    return;
+                }
+
+                if (CollegeDBEntities.GetContext().Schedule.Where(p => p.LessonPlan.UserID == schedule.LessonPlan.UserID && p.DayID == schedule.Day.DayID && p.LessonNumId == schedule.LessonNum.LessonNumID).Count() > 0)
+                {
+                    MessageBox.Show("Расписание для преподавателя на этот день и пару уже занято!");
+                    return;
+                }
+
                 if (schedule.ScheduleID == 0)
                     CollegeDBEntities.GetContext().Schedule.Add(schedule);
 

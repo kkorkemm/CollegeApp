@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CollegeDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CollegeDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Classroom">
           <Key>
             <PropertyRef Name="ClassroomID" />
@@ -156,7 +156,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LessonPlan_Gruppa">
-          <End Role="Gruppa" Type="Self.Gruppa" Multiplicity="1" />
+          <End Role="Gruppa" Type="Self.Gruppa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gruppa">
@@ -164,6 +166,18 @@
             </Principal>
             <Dependent Role="LessonPlan">
               <PropertyRef Name="GruppaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LessonPlan_LessonPlan">
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="LessonPlan1" Type="Self.LessonPlan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LessonPlan">
+              <PropertyRef Name="LessonPlanID" />
+            </Principal>
+            <Dependent Role="LessonPlan1">
+              <PropertyRef Name="LessonPlanID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -228,7 +242,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Schedule_LessonPlan">
-          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1" />
+          <End Role="LessonPlan" Type="Self.LessonPlan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LessonPlan">
@@ -359,6 +375,10 @@
             <End Role="Gruppa" EntitySet="Gruppa" />
             <End Role="LessonPlan" EntitySet="LessonPlan" />
           </AssociationSet>
+          <AssociationSet Name="FK_LessonPlan_LessonPlan" Association="Self.FK_LessonPlan_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlan" />
+            <End Role="LessonPlan1" EntitySet="LessonPlan" />
+          </AssociationSet>
           <AssociationSet Name="FK_LessonPlan_Subject" Association="Self.FK_LessonPlan_Subject">
             <End Role="Subject" EntitySet="Subject" />
             <End Role="LessonPlan" EntitySet="LessonPlan" />
@@ -416,8 +436,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CollegeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -481,6 +500,8 @@
           <NavigationProperty Name="Subject" Relationship="Self.FK_LessonPlan_Subject" FromRole="LessonPlan" ToRole="Subject" />
           <NavigationProperty Name="User" Relationship="Self.FK_LessonPlan_User" FromRole="LessonPlan" ToRole="User" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_LessonPlan" FromRole="LessonPlan" ToRole="Schedule" />
+          <NavigationProperty Name="LessonPlan1" Relationship="CollegeDBModel.FK_LessonPlan_LessonPlan" FromRole="LessonPlan" ToRole="LessonPlan1" />
+          <NavigationProperty Name="LessonPlan2" Relationship="CollegeDBModel.FK_LessonPlan_LessonPlan" FromRole="LessonPlan1" ToRole="LessonPlan" />
         </EntityType>
         <EntityType Name="Otdel">
           <Key>
@@ -863,7 +884,23 @@
             <End Role="User" EntitySet="User" />
             <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
+          <AssociationSet Name="FK_LessonPlan_LessonPlan" Association="CollegeDBModel.FK_LessonPlan_LessonPlan">
+            <End Role="LessonPlan" EntitySet="LessonPlan" />
+            <End Role="LessonPlan1" EntitySet="LessonPlan" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_LessonPlan_LessonPlan">
+          <End Type="CollegeDBModel.LessonPlan" Role="LessonPlan" Multiplicity="1" />
+          <End Type="CollegeDBModel.LessonPlan" Role="LessonPlan1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LessonPlan">
+              <PropertyRef Name="LessonPlanID" />
+            </Principal>
+            <Dependent Role="LessonPlan1">
+              <PropertyRef Name="LessonPlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

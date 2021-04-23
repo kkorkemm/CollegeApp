@@ -41,7 +41,7 @@
             </StackPanel>
             <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
                 <TextBlock Text="Статуc: "/>
-                <TextBlock Text="{Binding Status}"/>
+                <TextBlock Text="{Binding IsActive}"/>
             </StackPanel>
         </StackPanel>
 

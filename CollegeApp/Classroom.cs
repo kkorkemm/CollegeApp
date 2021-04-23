@@ -20,7 +20,8 @@ namespace CollegeApp
             this.Schedule = new HashSet<Schedule>();
         }
 
-        public string IsActive => Active ? "Активна" : "Заблокирована";
+        public string IsActive => Active ? "Активирована" : "Заблокирована";
+
         public byte ClassroomID { get; set; }
         public string ClassroomName { get; set; }
         public bool Active { get; set; }

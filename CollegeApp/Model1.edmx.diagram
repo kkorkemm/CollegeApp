@@ -36,6 +36,7 @@
         <AssociationConnector Association="CollegeDBModel.FK_User_Role" ManuallyRouted="false" />
         <AssociationConnector Association="CollegeDBModel.FK_Student_User" ManuallyRouted="false" />
         <AssociationConnector Association="CollegeDBModel.FK_Teacher_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeDBModel.FK_LessonPlan_LessonPlan" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

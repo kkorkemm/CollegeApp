@@ -7,20 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Linq;
-
 namespace CollegeApp
 {
+    using System.Linq;
+    
     public partial class Teacher
     {
         public int UserID { get; set; }
         public int OtdelID { get; set; }
         public bool HasHighEducation { get; set; }
 
+        public int CountOfPlan => CollegeDBEntities.GetContext().LessonPlan.Where(p => p.UserID == UserID).Count();
+
+        public int CountOfHours => CollegeDBEntities.GetContext().LessonPlan.Where(p => p.UserID == UserID).Sum(p => p.Subject.Hours);
+
         public string HighEducation => HasHighEducation ? "Есть" : "Нет";
 
-        public int CountOfPlan => CollegeDBEntities.GetContext().LessonPlan.Where(p => p.UserID == UserID).Count();
-        public int CountOfHours { get; set; }
         public virtual Otdel Otdel { get; set; }
         public virtual User User { get; set; }
     }

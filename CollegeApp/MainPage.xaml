@@ -26,9 +26,6 @@
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button Content="Профиль"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Margin="0 0 20 0"/>
                 <Button Content="Выйти"
                         x:Name="BtnExit"
                         Click="BtnExit_Click"/>
@@ -49,26 +46,30 @@
             <TabItem Header="Управление расписанием"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemPlan">
                 <Frame x:Name="planTabFrame"/>
             </TabItem>
             <TabItem Header="Преподаватели"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemTeacher">
                 <Frame x:Name="teacherTabFrame"
                        NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Студенты"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemStudent">
                 <Frame Name="studentTabFrame"/>
             </TabItem>
             <TabItem Header="Отделения"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemOtdel">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -90,22 +91,41 @@
             <TabItem Header="Группы"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemGruppa">
                 <Frame x:Name="gruppaTabFrame"
                        NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Предметы"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemSubject">
                 <Frame x:Name="subjectTabFrame"
                        NavigationUIVisibility="Hidden"/>
             </TabItem>
             <TabItem Header="Аудитории"
                      Style="{StaticResource MaterialDesignNavigationRailTabItem}"
                      Width="auto"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                     x:Name="tabItemClassroom">
                 <Frame x:Name="classroomTabFrame"
+                       NavigationUIVisibility="Hidden"/>
+            </TabItem>
+            <TabItem Header="Профиль"
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}"
+                     Width="auto"
+                     VerticalAlignment="Center"
+                     x:Name="tabItemProfile">
+                <Frame x:Name="profileTabFrame"
+                       NavigationUIVisibility="Hidden"/>
+            </TabItem>
+            <TabItem Header="Сообщить о проблеме"
+                     Style="{StaticResource MaterialDesignNavigationRailTabItem}"
+                     Width="auto"
+                     VerticalAlignment="Center"
+                     x:Name="tabItemMessage">
+                <Frame x:Name="messageTabFrame"
                        NavigationUIVisibility="Hidden"/>
             </TabItem>
         </TabControl>

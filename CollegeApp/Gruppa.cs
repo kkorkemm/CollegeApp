@@ -20,15 +20,16 @@ namespace CollegeApp
             this.LessonPlan = new HashSet<LessonPlan>();
             this.Student = new HashSet<Student>();
         }
-    
+
+
+        public string IsActive => Active ? "Активирована" : "Заблокирована";
+
         public int GruppaID { get; set; }
         public string GruppaName { get; set; }
         public int SpecialID { get; set; }
         public System.DateTime BeginDate { get; set; }
         public System.DateTime FinishDate { get; set; }
         public bool Active { get; set; }
-
-        public string IsActive => Active ? "Активна" : "Заблокирована";
     
         public virtual Special Special { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

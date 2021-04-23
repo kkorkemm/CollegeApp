@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -30,9 +31,23 @@ namespace CollegeApp
                 return;
             }
             else
-            {
+            {      
                 if (currentOtdel.OtdelID == 0)
+                {
+                    int count = CollegeDBEntities.GetContext().Otdel.Where(p => p.OtdelName == currentOtdel.OtdelName).Count();
+
+                    if (count > 0)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Такое отделение уже существует! Продолжить?", "Внимание!", MessageBoxButton.YesNo);
+
+                        if (result == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                    }
+
                     CollegeDBEntities.GetContext().Otdel.Add(currentOtdel);
+                }                
 
                 try
                 {

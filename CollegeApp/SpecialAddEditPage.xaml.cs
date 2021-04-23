@@ -45,7 +45,21 @@ namespace CollegeApp
             else
             {
                 if (currentSpecial.SpecialID == 0)
+                {
+                    int count = CollegeDBEntities.GetContext().Special.Where(p => p.SpecialName == currentSpecial.SpecialName).Count();
+
+                    if (count > 0)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Такая специальность уже существует! Продолжить?", "Внимание!", MessageBoxButton.YesNo);
+
+                        if (result == MessageBoxResult.No)
+                        {
+                            return;
+                        }
+                    }
+
                     CollegeDBEntities.GetContext().Special.Add(currentSpecial);
+                }
 
                 try
                 {
@@ -56,7 +70,7 @@ namespace CollegeApp
                 catch (Exception)
                 {
                     MessageBox.Show("При попытке сохранения произошла ошибка");
-                }
+                }         
             }
         }
 

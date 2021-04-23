@@ -63,6 +63,12 @@ namespace CollegeApp
 
                 if (currentUser.UserID == 0)
                 {
+                    if (CollegeDBEntities.GetContext().User.Where(p => p.Login == currentUser.Login).Count() > 0)
+                    {
+                        MessageBox.Show("Пользователь с таким логином уже существует!", "Внимание!");
+                        return;
+                    }
+
                     CollegeDBEntities.GetContext().User.Add(currentUser);
 
                     Student student = new Student

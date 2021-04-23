@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -60,6 +59,12 @@ namespace CollegeApp
 
                 if (currentUser.UserID == 0)
                 {
+                    if (CollegeDBEntities.GetContext().User.Where(p => p.Login == currentUser.Login).Count() > 0)
+                    {
+                        MessageBox.Show("Пользователь с таким логином уже существует!", "Внимание!");
+                        return;
+                    }
+
                     CollegeDBEntities.GetContext().User.Add(currentUser);
 
                     Teacher currentTeacher = new Teacher();
